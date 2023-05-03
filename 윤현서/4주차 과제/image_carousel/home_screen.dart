@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void onHeartPressed(){
     showCupertinoDialog(
         context: context,
-        builder: (BuildContext context) {
+        builder: BuilderContext context{
           return Align(
             alignment: Alignment.bottomCenter,
             child: Container(
