@@ -32,31 +32,31 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-  void onHeartPressed(){
+
+  void onHeartPressed() {
     showCupertinoDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              color: Colors.white,
-              height: 300,
-              child: CupertinoDatePicker(
-                mode: CupertinoDatePickerMode.date,
-                onDateTimeChanged: (DateTime date) {
-                  setState(() {
-                    firstDay=date;
-                  });
-                },
-              ),
+      context: context,
+      builder: (BuildContext context) {
+        return Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            color: Colors.white,
+            height: 300,
+            child: CupertinoDatePicker(
+              mode: CupertinoDatePickerMode.date,
+              onDateTimeChanged: (DateTime date) {
+                setState(() {
+                  firstDay = date;
+                });
+              },
             ),
-          );
-        },
-        barrierDismissible: true,
+          ),
+        );
+      },
+      barrierDismissible: true,
     );
   }
 }
-
 
 class _DDAY extends StatelessWidget {
   final GestureTapCallback onHeartPressed;
@@ -67,8 +67,8 @@ class _DDAY extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    final textTheme=Theme.of(context).textTheme;
-    final now=DateTime.now();
+    final textTheme = Theme.of(context).textTheme;
+    final now = DateTime.now();
     return Column(
       children: [
         const SizedBox(height: 16.0),
@@ -87,16 +87,16 @@ class _DDAY extends StatelessWidget {
         ),
         const SizedBox(height: 16.0),
         IconButton(
-            iconSize: 60.0,
-            onPressed: onHeartPressed,
-            icon: Icon(
-              Icons.favorite,
-              color: Colors.red,
-            ),
+          iconSize: 60.0,
+          onPressed: onHeartPressed,
+          icon: Icon(
+            Icons.favorite,
+            color: Colors.red,
+          ),
         ),
         const SizedBox(height: 16.0),
         Text(
-          'D+${DateTime(now.year,now.month,now.day).difference(firstDay).inDays+1}',
+          '${firstDay.difference(now).inHours}시 ${firstDay.difference(now).inMinutes % 60}분 ${firstDay.difference(now).inSeconds % 3600}초',
           style: textTheme.headline2,
         ),
       ],
@@ -108,12 +108,12 @@ class _TravelImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Center(
-          child: Image.asset(
-            'asset/img/airplane.png',
-            height: MediaQuery.of(context).size.height / 2,
-          ),
+      child: Center(
+        child: Image.asset(
+          'asset/img/airplane.png',
+          height: MediaQuery.of(context).size.height / 2,
         ),
+      ),
     );
   }
 }
